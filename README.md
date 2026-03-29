@@ -102,6 +102,9 @@ These versions are built from the restructured webthree-umbrella where solidity,
 | solc-v016-d41f8b7c | 0.1.6 | Oct 16, 2015 | d41f8b7c | Pre-AST-refactor |
 | solc-v017-b4e666cc | 0.1.7 | Nov 17, 2015 | b4e666cc | POST-AST-refactor, formal verification |
 | solc-jan20-d2f18c73 | 0.2.0+110 | Jan 20, 2016 | d2f18c73 | Pre-release of v0.2.1 |
+| solc-0.2.0-4dc2445ed | 0.2.0 | Dec 1, 2015 | 4dc2445ed (v0.2.0) | v0.2.0 release tag, umbrella 794ce70ea1 |
+| solc-0.2.0-67c855c58 | 0.2.0 nightly | Jan 2016 | 67c855c58 (v0.2.0-138) | Nightly, matches solc-v011/solc-jan20 ARM binaries |
+| solc-0.2.1-fad2d4df2 | 0.2.1 | Feb 2016 | fad2d4df2 (v0.2.1-3) | v0.2.1 release, umbrella 794ce70ea1 |
 | solc-umbrella-6610add6 | 0.3.5-89 | Jul 2016 | 6610add6 | Latest sub-project era |
 
 ## Usage
@@ -211,6 +214,9 @@ strip solc-static
 | v0.1.6 | acbae1e05 | d41f8b7c (override) | Umbrella points to nightly; override to tag |
 | v0.1.7 | a760b7fed | b4e666cc (auto) | First with AST refactor + formal verification |
 | v0.2.0+110 | a97d01ce8 | d2f18c73 (auto) | "jan20" = ~January 20, 2016 build |
+| v0.2.0 | 794ce70ea1 | 4dc2445ed (override) | v0.2.0 release tag |
+| v0.2.0-138 | 794ce70ea1 | 67c855c58 (override) | Nightly, matches ARM solc-v011/solc-jan20 |
+| v0.2.1 | 794ce70ea1 | fad2d4df2 (auto) | Umbrella's default submodule pointer |
 | v0.3.5-89 | 1d9f651b4 | 6610add6 (auto) | Latest sub-project era before repo cleanup |
 
 ## Notes
