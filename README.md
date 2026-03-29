@@ -88,8 +88,15 @@ chmod +x solc-0.1.1-bff6f678b
 | solc-0.1.0-e457d74d1 | 0.1.0 | Jul 15, 2015 | e457d74d1 | Stack slot allowance |
 | solc-0.1.0-0ed47e902 | 0.1.0 | Jul 28, 2015 | 0ed47e902 | Gas computation fix |
 | solc-0.1.0-e892152ba | 0.1.0 | Jul 31, 2015 | e892152ba | Clone contracts |
+| solc-0.1.0-9c3983d1c | 0.1.0 | Jul 9, 2015 | 9c3983d1c | Flexible string literals (pre-versioning, reports 0.9.29) |
+| solc-0.1.0-8221a3c4c | 0.1.0 | Jul 16, 2015 | 8221a3c4c | Structs with mappings in memory |
 | solc-0.1.0-056180fb2 | 0.1.0 | Aug 3, 2015 | 056180fb2 | Strings as mapping keys |
+| solc-0.1.0-40ab01edd | 0.1.0 | Aug 4, 2015 | 40ab01edd | Bytes<->string conversion (post-0.1.1, reports 0.1.0) |
+| solc-0.1.0-534cdce9a | 0.1.0 | Aug 4, 2015 | 534cdce9a | Clone value transfer fix (post-0.1.1, reports 0.1.0) |
 | solc-0.1.1-bff6f678b | 0.1.1 | Aug 4, 2015 | bff6f678b | v0.1.1 release |
+| solc-0.1.1-f23a60c70 | 0.1.1 | Aug 5, 2015 | f23a60c70 | Merge of bytes conversion + clone fix + strings mapping fix |
+| solc-0.1.1-4661d4773 | 0.1.1 | Aug 7, 2015 | 4661d4773 | Disallow comparison for reference types |
+| solc-0.1.1-888909bee | 0.1.1 | Aug 7, 2015 | 888909bee | Disallow boolean operators for integers |
 
 ### Sub-project era (webthree-umbrella with git submodules)
 
@@ -98,6 +105,8 @@ These versions are built from the restructured webthree-umbrella where solidity,
 | Binary | Version | Date | Solidity Commit | Notes |
 |--------|---------|------|-----------------|-------|
 | solc-poc8-72f598f5b | 0.8.2 (devcore) | Feb 24, 2015 | monorepo poc-8-tag | PoC-8 era, no libevmasm |
+| solc-0.1.2-786b61ce7 | 0.1.2 | Aug 20, 2015 | 786b61ce7 | Same codegen as 0.1.1-786b61ce7 (version bump only) |
+| solc-0.1.3-028f561da | 0.1.3 | Sep 23, 2015 | 028f561da | v0.1.3 release, umbrella e04b786b8 |
 | solc-v015-23865e39 | 0.1.5 | Oct 7, 2015 | 23865e39 | Pre-AST-refactor, has --libraries |
 | solc-v016-d41f8b7c | 0.1.6 | Oct 16, 2015 | d41f8b7c | Pre-AST-refactor |
 | solc-v017-b4e666cc | 0.1.7 | Nov 17, 2015 | b4e666cc | POST-AST-refactor, formal verification |
@@ -105,7 +114,10 @@ These versions are built from the restructured webthree-umbrella where solidity,
 | solc-0.2.0-4dc2445ed | 0.2.0 | Dec 1, 2015 | 4dc2445ed (v0.2.0) | v0.2.0 release tag, umbrella 794ce70ea1 |
 | solc-0.2.0-67c855c58 | 0.2.0 nightly | Jan 2016 | 67c855c58 (v0.2.0-138) | Nightly, matches solc-v011/solc-jan20 ARM binaries |
 | solc-0.2.1-fad2d4df2 | 0.2.1 | Feb 2016 | fad2d4df2 (v0.2.1-3) | v0.2.1 release, umbrella 794ce70ea1 |
+| solc-0.2.2-ef92f5661 | 0.2.2 | Feb 17, 2016 | ef92f5661 (v0.2.2) | v0.2.2 release, umbrella v1.2.0 |
+| solc-0.3.1-c67926cf2 | 0.3.1 | Mar 31, 2016 | c67926cf2 (v0.3.1) | v0.3.1 release, umbrella v1.2.3 |
 | solc-umbrella-6610add6 | 0.3.5-89 | Jul 2016 | 6610add6 | Latest sub-project era |
+| solc-0.3.6-988fe5e5a | 0.3.6 | Aug 10, 2016 | 988fe5e5a (v0.3.6) | Standalone build (post-umbrella removal) |
 
 ## Usage
 
@@ -214,10 +226,15 @@ strip solc-static
 | v0.1.6 | acbae1e05 | d41f8b7c (override) | Umbrella points to nightly; override to tag |
 | v0.1.7 | a760b7fed | b4e666cc (auto) | First with AST refactor + formal verification |
 | v0.2.0+110 | a97d01ce8 | d2f18c73 (auto) | "jan20" = ~January 20, 2016 build |
+| v0.1.2 | — | 786b61ce7 (monorepo) | Same codegen as monorepo 0.1.1-786b61ce7 |
+| v0.1.3 | e04b786b8 | 028f561da (override) | v0.1.3 release |
 | v0.2.0 | 794ce70ea1 | 4dc2445ed (override) | v0.2.0 release tag |
 | v0.2.0-138 | 794ce70ea1 | 67c855c58 (override) | Nightly, matches ARM solc-v011/solc-jan20 |
 | v0.2.1 | 794ce70ea1 | fad2d4df2 (auto) | Umbrella's default submodule pointer |
+| v0.2.2 | v1.2.0 | ef92f5661 (override) | v0.2.2 release |
+| v0.3.1 | v1.2.3 | c67926cf2 (override) | v0.3.1 release |
 | v0.3.5-89 | 1d9f651b4 | 6610add6 (auto) | Latest sub-project era before repo cleanup |
+| v0.3.6 | standalone | 988fe5e5a | Standalone build, no umbrella needed |
 
 ## Notes
 
