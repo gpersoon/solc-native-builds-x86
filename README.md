@@ -75,12 +75,15 @@ chmod +x solc-0.1.1-bff6f678b
 
 | Binary | Version | Date | Commit | Notes |
 |--------|---------|------|--------|-------|
-| solc-0.9.27-79375056d | 0.9.27 | Jun 25, 2015 | 79375056d | Memory arrays merge |
-| solc-0.9.27-766c3ee37 | 0.9.27 | Jun 26, 2015 | 766c3ee37 | Calldata array fixes |
-| solc-0.9.27-f95baf2cb | 0.9.27 | Jun 26, 2015 | f95baf2cb | Memory object delete |
-| solc-0.9.28-d3ff38144 | 0.9.28 | Jun 30, 2015 | d3ff38144 | Memory structs |
-| solc-0.9.28-905da13c3 | 0.9.28 | Jun 30, 2015 | 905da13c3 | Struct constructors |
-| solc-0.9.28-97dc2d61f | 0.9.28 | Jun 30, 2015 | 97dc2d61f | Array-to-storage fix |
+| solc-0.0.9.24-e66383994 | 0.9.24 | Jun 5, 2015 | e66383994 | Dynamic memory (first with freeMemoryPointer) |
+| solc-0.0.9.25-9db5fb5bb | 0.9.23* | Jun 6, 2015 | 9db5fb5bb | Improved "Stack too deep" (pre-ISZERO opt) |
+| solc-0.0.9.26-7229fad1b | 0.9.23* | Jun 6, 2015 | 7229fad1b | Optimize double ISZERO (CSE rule change) |
+| solc-0.0.9.27-79375056d | 0.9.27 | Jun 25, 2015 | 79375056d | Memory arrays merge |
+| solc-0.0.9.27-766c3ee37 | 0.9.27 | Jun 26, 2015 | 766c3ee37 | Calldata array fixes |
+| solc-0.0.9.27-f95baf2cb | 0.9.27 | Jun 26, 2015 | f95baf2cb | Memory object delete |
+| solc-0.0.9.28-d3ff38144 | 0.9.28 | Jun 30, 2015 | d3ff38144 | Memory structs |
+| solc-0.0.9.28-905da13c3 | 0.9.28 | Jun 30, 2015 | 905da13c3 | Struct constructors |
+| solc-0.0.9.28-97dc2d61f | 0.9.28 | Jun 30, 2015 | 97dc2d61f | Array-to-storage fix |
 | solc-0.1.0-248eb8866 | 0.1.0 | Jul 14, 2015 | 248eb8866 | Bytes comparison fix (pre-storage-ref) |
 | solc-0.1.0-f8a3824f0 | 0.1.0 | Jul 14, 2015 | f8a3824f0 | Single stack slot for storage refs |
 | solc-0.1.0-fb8e1b382 | 0.1.0 | Jul 14, 2015 | fb8e1b382 | Merge of storage ref + byte fixes |
@@ -88,7 +91,7 @@ chmod +x solc-0.1.1-bff6f678b
 | solc-0.1.0-e457d74d1 | 0.1.0 | Jul 15, 2015 | e457d74d1 | Stack slot allowance |
 | solc-0.1.0-0ed47e902 | 0.1.0 | Jul 28, 2015 | 0ed47e902 | Gas computation fix |
 | solc-0.1.0-e892152ba | 0.1.0 | Jul 31, 2015 | e892152ba | Clone contracts |
-| solc-0.1.0-9c3983d1c | 0.1.0 | Jul 9, 2015 | 9c3983d1c | Flexible string literals (pre-versioning, reports 0.9.29) |
+| solc-0.0.9.29-9c3983d1c | 0.9.29 | Jul 9, 2015 | 9c3983d1c | Flexible string literals (pre-versioning, reports 0.9.29) |
 | solc-0.1.0-8221a3c4c | 0.1.0 | Jul 16, 2015 | 8221a3c4c | Structs with mappings in memory |
 | solc-0.1.0-056180fb2 | 0.1.0 | Aug 3, 2015 | 056180fb2 | Strings as mapping keys |
 | solc-0.1.0-40ab01edd | 0.1.0 | Aug 4, 2015 | 40ab01edd | Bytes<->string conversion (post-0.1.1, reports 0.1.0) |
@@ -104,31 +107,29 @@ These versions are built from the restructured webthree-umbrella where solidity,
 
 | Binary | Version | Date | Solidity Commit | Notes |
 |--------|---------|------|-----------------|-------|
-| solc-poc8-72f598f5b | 0.8.2 (devcore) | Feb 24, 2015 | monorepo poc-8-tag | PoC-8 era, no libevmasm |
-| solc-0.1.2-786b61ce7 | 0.1.2 | Aug 20, 2015 | 786b61ce7 | Same codegen as 0.1.1-786b61ce7 (version bump only) |
+| solc-0.0.8.2-72f598f5b | 0.8.2 (devcore) | Feb 24, 2015 | monorepo poc-8-tag | PoC-8 era, no libevmasm |
 | solc-0.1.3-028f561da | 0.1.3 | Sep 23, 2015 | 028f561da | v0.1.3 release, umbrella e04b786b8 |
-| solc-v015-23865e39 | 0.1.5 | Oct 7, 2015 | 23865e39 | Pre-AST-refactor, has --libraries |
-| solc-v016-d41f8b7c | 0.1.6 | Oct 16, 2015 | d41f8b7c | Pre-AST-refactor |
-| solc-v017-b4e666cc | 0.1.7 | Nov 17, 2015 | b4e666cc | POST-AST-refactor, formal verification |
-| solc-jan20-d2f18c73 | 0.2.0+110 | Jan 20, 2016 | d2f18c73 | Pre-release of v0.2.1 |
+| solc-0.1.5-23865e39 | 0.1.5 | Oct 7, 2015 | 23865e39 | Pre-AST-refactor, has --libraries |
+| solc-0.1.6-d41f8b7c | 0.1.6 | Oct 16, 2015 | d41f8b7c | Pre-AST-refactor |
+| solc-0.1.7-b4e666cc | 0.1.7 | Nov 17, 2015 | b4e666cc | POST-AST-refactor, formal verification |
+| solc-0.2.0-d2f18c73 | 0.2.0+110 | Jan 20, 2016 | d2f18c73 | Pre-release of v0.2.1 |
 | solc-0.2.0-4dc2445ed | 0.2.0 | Dec 1, 2015 | 4dc2445ed (v0.2.0) | v0.2.0 release tag, umbrella 794ce70ea1 |
 | solc-0.2.0-67c855c58 | 0.2.0 nightly | Jan 2016 | 67c855c58 (v0.2.0-138) | Nightly, matches solc-v011/solc-jan20 ARM binaries |
 | solc-0.2.1-fad2d4df2 | 0.2.1 | Feb 2016 | fad2d4df2 (v0.2.1-3) | v0.2.1 release, umbrella 794ce70ea1 |
 | solc-0.2.2-ef92f5661 | 0.2.2 | Feb 17, 2016 | ef92f5661 (v0.2.2) | v0.2.2 release, umbrella v1.2.0 |
-| solc-0.3.1-c67926cf2 | 0.3.1 | Mar 31, 2016 | c67926cf2 (v0.3.1) | v0.3.1 release, umbrella v1.2.3 |
-| solc-umbrella-6610add6 | 0.3.5-89 | Jul 2016 | 6610add6 | Latest sub-project era |
+| solc-0.3.5-6610add6 | 0.3.5-89 | Jul 2016 | 6610add6 | Latest sub-project era |
 | solc-0.3.6-988fe5e5a | 0.3.6 | Aug 10, 2016 | 988fe5e5a (v0.3.6) | Standalone build (post-umbrella removal) |
 
 ## Usage
 
-### Monorepo era (0.9.x, 0.1.0, 0.1.1)
+### Monorepo era (0.0.9.x, 0.1.0, 0.1.1)
 ```bash
 ./solc-0.1.1-bff6f678b --optimize 1 --binary stdout contract.sol
 ```
 
 ### Sub-project era (0.1.5+)
 ```bash
-./solc-v015-23865e39 --optimize --bin contract.sol
+./solc-0.1.5-23865e39 --optimize --bin contract.sol
 ```
 
 Note: CLI changed between eras. Monorepo builds use `--optimize 1 --binary stdout`, sub-project builds use `--optimize --bin`.
@@ -140,7 +141,7 @@ Note: CLI changed between eras. Monorepo builds use `--optimize 1 --binary stdou
 - Docker
 - Clone of [webthree-umbrella](https://github.com/ethereum/webthree-umbrella) at `../solc/webthree-umbrella`
 
-### Monorepo era (0.9.x through 0.1.1)
+### Monorepo era (0.0.9.x through 0.1.1)
 
 These commits exist directly in the webthree-umbrella repo. Use the Dockerfile above with `--build-arg COMMIT=<hash>`.
 
@@ -225,14 +226,12 @@ strip solc-static
 | v0.1.5 | fb27f39c4 | 23865e39 (auto) | |
 | v0.1.6 | acbae1e05 | d41f8b7c (override) | Umbrella points to nightly; override to tag |
 | v0.1.7 | a760b7fed | b4e666cc (auto) | First with AST refactor + formal verification |
-| v0.2.0+110 | a97d01ce8 | d2f18c73 (auto) | "jan20" = ~January 20, 2016 build |
-| v0.1.2 | — | 786b61ce7 (monorepo) | Same codegen as monorepo 0.1.1-786b61ce7 |
+| v0.2.0+110 | a97d01ce8 | d2f18c73 (auto) | ~January 20, 2016 build |
 | v0.1.3 | e04b786b8 | 028f561da (override) | v0.1.3 release |
 | v0.2.0 | 794ce70ea1 | 4dc2445ed (override) | v0.2.0 release tag |
 | v0.2.0-138 | 794ce70ea1 | 67c855c58 (override) | Nightly, matches ARM solc-v011/solc-jan20 |
 | v0.2.1 | 794ce70ea1 | fad2d4df2 (auto) | Umbrella's default submodule pointer |
 | v0.2.2 | v1.2.0 | ef92f5661 (override) | v0.2.2 release |
-| v0.3.1 | v1.2.3 | c67926cf2 (override) | v0.3.1 release |
 | v0.3.5-89 | 1d9f651b4 | 6610add6 (auto) | Latest sub-project era before repo cleanup |
 | v0.3.6 | standalone | 988fe5e5a | Standalone build, no umbrella needed |
 
@@ -240,7 +239,9 @@ strip solc-static
 
 - The `BuildInfo.h` stub is needed for commits before `bb3d31c84` (Jul 8, 2015 "Versioning for Solidity"). Later commits generate it via cmake.
 - CryptoPP 5.6.2 must be built from source with `-fPIC` for static linking.
-- Commits before Jun 25, 2015 (`79375056d`) lack language features needed for structs-in-mappings and may fail to compile certain contracts.
+- Commits before Jun 25, 2015 (`79375056d`, i.e. pre-0.0.9.27) lack language features needed for structs-in-mappings and may fail to compile certain contracts.
+- The 0.0.9.24-26 binaries were built natively (not via Docker) by extracting object files from cmake's shared library build and statically linking them. They replace libdevcrypto's CryptoPP-dependent SHA3 with a standalone keccak256 stub linked against libethash's sha3.c. These binaries report version 0.9.23/0.9.24 because the version string wasn't updated between these micro-commits (all from June 5-6, 2015).
+- The 3 intermediate commits (e66383994, 9db5fb5bb, 7229fad1b) represent key CSE optimizer transitions: e66383994 introduces freeMemoryPointer (constructor pattern `6060604052`), 9db5fb5bb improves stack-too-deep handling, and 7229fad1b adds double-ISZERO elimination rules in ExpressionClasses. Contracts deployed between these dates may require one of these specific builds for exact bytecode matching.
 - secp256k1 is only present in some commits. The Dockerfiles handle its absence gracefully.
 - The static relink step creates `.a` archives from the cmake-built `.o` files, then links everything into a single binary. Only libc, libstdc++, libpthread, libdl, and librt remain as dynamic dependencies (present on all Linux systems).
 - Sub-project era builds (v0.1.5+) need `libsnappy-dev` installed for static linking (`apt-get install libsnappy-dev`).
