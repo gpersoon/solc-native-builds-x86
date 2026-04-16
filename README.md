@@ -78,6 +78,13 @@ chmod +x solc-0.1.1-bff6f678b
 | solc-0.0.9.24-e66383994 | 0.9.24 | Jun 5, 2015 | e66383994 | Dynamic memory (first with freeMemoryPointer) |
 | solc-0.0.9.25-9db5fb5bb | 0.9.23* | Jun 6, 2015 | 9db5fb5bb | Improved "Stack too deep" (pre-ISZERO opt) |
 | solc-0.0.9.26-7229fad1b | 0.9.23* | Jun 6, 2015 | 7229fad1b | Optimize double ISZERO (CSE rule change) |
+| solc-0.0.9.26+1-2d2c9b3a7 | 0.9.23* | Jun 2015 | 2d2c9b3a7 | Quick fix inaccessible sequences (earliest in CSE gap) |
+| solc-0.0.9.26+2-6c45ac6ab | 0.9.25 | Jun 2015 | 6c45ac6ab | Optimize RETURN x 0 → STOP |
+| solc-0.0.9.26+3-5eb31c228 | 0.9.25 | Jun 2015 | 5eb31c228 | Source locations for new memory management |
+| solc-0.0.9.26+4-5848faeb4 | 0.9.26 | Jun 2015 | 5848faeb4 | Pre-jump output size for contracts in this window |
+| solc-0.0.9.26+5-536bd3618 | 0.9.26 | Jun 2015 | 536bd3618 | Type conversion specialities (post-jump) |
+| solc-0.0.9.26+6-c75c72a99 | 0.9.26 | Jun 2015 | c75c72a99 | Storage reference conversions |
+| solc-0.0.9.26+7-5ba138f09 | 0.9.27 | Jun 2015 | 5ba138f09 | Memory-storage copy (late in CSE gap) |
 | solc-0.0.9.27-79375056d | 0.9.27 | Jun 25, 2015 | 79375056d | Memory arrays merge |
 | solc-0.0.9.27-766c3ee37 | 0.9.27 | Jun 26, 2015 | 766c3ee37 | Calldata array fixes |
 | solc-0.0.9.27-f95baf2cb | 0.9.27 | Jun 26, 2015 | f95baf2cb | Memory object delete |
@@ -110,6 +117,7 @@ These versions are built from the restructured webthree-umbrella where solidity,
 | solc-0.0.8.2-72f598f5b | 0.8.2 (devcore) | Feb 24, 2015 | monorepo poc-8-tag | PoC-8 era, no libevmasm |
 | solc-0.1.3-028f561da | 0.1.3 | Sep 23, 2015 | 028f561da | v0.1.3 release, umbrella e04b786b8 |
 | solc-0.1.5-23865e39 | 0.1.5 | Oct 7, 2015 | 23865e39 | Pre-AST-refactor, has --libraries |
+| solc-0.1.5-e11e10f8 | 0.1.5 | Oct 7, 2015 | e11e10f8 | Second 0.1.5 build (different commit, same codegen) |
 | solc-0.1.6-d41f8b7c | 0.1.6 | Oct 16, 2015 | d41f8b7c | Pre-AST-refactor |
 | solc-0.1.7-b4e666cc | 0.1.7 | Nov 17, 2015 | b4e666cc | POST-AST-refactor, formal verification |
 | solc-0.2.0-d2f18c73 | 0.2.0+110 | Jan 20, 2016 | d2f18c73 | Pre-release of v0.2.1 |
@@ -117,7 +125,12 @@ These versions are built from the restructured webthree-umbrella where solidity,
 | solc-0.2.0-67c855c58 | 0.2.0 nightly | Jan 2016 | 67c855c58 (v0.2.0-138) | Nightly, matches solc-v011/solc-jan20 ARM binaries |
 | solc-0.2.1-fad2d4df2 | 0.2.1 | Feb 2016 | fad2d4df2 (v0.2.1-3) | v0.2.1 release, umbrella 794ce70ea1 |
 | solc-0.2.2-ef92f5661 | 0.2.2 | Feb 17, 2016 | ef92f5661 (v0.2.2) | v0.2.2 release, umbrella v1.2.0 |
-| solc-0.3.5-6610add6 | 0.3.5-89 | Jul 2016 | 6610add6 | Latest sub-project era |
+| solc-0.3.0-1f9578ce | 0.3.0 | Mar 11, 2016 | 1f9578ce | v0.3.0 release, breaking changes (types) |
+| solc-0.3.2-81ae2a78 | 0.3.2 | Apr 18, 2016 | 81ae2a78 | v0.3.2 release |
+| solc-0.3.3-4dc1cb14 | 0.3.3 | May 27, 2016 | 4dc1cb14 | |
+| solc-0.3.4-7dab8902 | 0.3.4 | Jun 10, 2016 | 7dab8902 | v0.3.4 release |
+| solc-0.3.5-5f97274a | 0.3.5 | Jun 10, 2016 | 5f97274a | v0.3.5 release tag |
+| solc-0.3.5-6610add6 | 0.3.5-89 | Jul 2016 | 6610add6 | Latest sub-project era nightly |
 | solc-0.3.6-988fe5e5a | 0.3.6 | Aug 10, 2016 | 988fe5e5a (v0.3.6) | Standalone build (post-umbrella removal) |
 
 ## Usage
@@ -223,7 +236,8 @@ strip solc-static
 
 | Version | Umbrella Commit | Solidity Submodule | Notes |
 |---------|----------------|--------------------|-------|
-| v0.1.5 | fb27f39c4 | 23865e39 (auto) | |
+| v0.1.5 | fb27f39c4 | 23865e39 (auto) | First 0.1.5 build |
+| v0.1.5 | fb27f39c4 | e11e10f8 (override) | Second 0.1.5 build, same codegen |
 | v0.1.6 | acbae1e05 | d41f8b7c (override) | Umbrella points to nightly; override to tag |
 | v0.1.7 | a760b7fed | b4e666cc (auto) | First with AST refactor + formal verification |
 | v0.2.0+110 | a97d01ce8 | d2f18c73 (auto) | ~January 20, 2016 build |
@@ -232,8 +246,17 @@ strip solc-static
 | v0.2.0-138 | 794ce70ea1 | 67c855c58 (override) | Nightly, matches ARM solc-v011/solc-jan20 |
 | v0.2.1 | 794ce70ea1 | fad2d4df2 (auto) | Umbrella's default submodule pointer |
 | v0.2.2 | v1.2.0 | ef92f5661 (override) | v0.2.2 release |
-| v0.3.5-89 | 1d9f651b4 | 6610add6 (auto) | Latest sub-project era before repo cleanup |
+| v0.3.0 | (standalone) | 1f9578ce | v0.3.0 release, standalone solidity repo |
+| v0.3.2 | (standalone) | 81ae2a78 | v0.3.2 release |
+| v0.3.3 | (standalone) | 4dc1cb14 | v0.3.3 release |
+| v0.3.4 | (standalone) | 7dab8902 | v0.3.4 release |
+| v0.3.5 | (standalone) | 5f97274a | v0.3.5 release tag |
+| v0.3.5-89 | 1d9f651b4 | 6610add6 (auto) | Latest sub-project era nightly |
 | v0.3.6 | standalone | 988fe5e5a | Standalone build, no umbrella needed |
+
+## JavaScript soljson Wrapper Scripts
+
+Moved to `../solc/`. See `../solc/SOLJSON_ORIGINS.md` for documentation.
 
 ## Notes
 
@@ -247,3 +270,86 @@ strip solc-static
 - Sub-project era builds (v0.1.5+) need `libsnappy-dev` installed for static linking (`apt-get install libsnappy-dev`).
 - Some sub-project umbrella commits have submodule pointers to "deleted content" cleanup commits. Use umbrella commits from BEFORE the repo cleanup (see table above).
 - v0.1.7+ has the AST refactored into subdirectories (`analysis/`, `ast/`, `codegen/`, etc.). The `find` command for `.o` files must be recursive.
+
+## Intermediate CSE-gap builds (`solc-0.0.9.26+N-<hash>`)
+
+The binaries in the `solc-0.0.9.26+N-<hash>` family fill the ~20-commit gap
+between `solc-0.0.9.26-7229fad1b` and `solc-0.0.9.27-766c3ee37` where the CSE
+(CommonSubexpressionEliminator) optimizer added stack-reuse rules that change
+the bytecode output size on many 2015-era contracts.
+
+| Suffix | Commit | Chronological order in the gap |
+|---|---|---|
+| `+1` | `2d2c9b3a7` | earliest — "Quick fix to not access inaccessible sequences" |
+| `+2` | `6c45ac6ab` | "Optimize RETURN x 0 to STOP" |
+| `+3` | `5eb31c228` | "Source locations for new memory management" |
+| `+4` | `5848faeb4` | pre-jump boundary for many contracts |
+| `+5` | `536bd3618` | post-jump boundary |
+| `+6` | `c75c72a99` | "Type conversion specialities for storage references" |
+| `+7` | `5ba138f09` | "Memory-storage copy" — latest in the gap |
+
+Each is a **single-file ~4.7 MB static ELF** with the same dynamic-dependency
+set as the other static binaries in this directory (`libjsoncpp.so.25`,
+`libstdc++.so.6`, `libgcc_s.so.1`, `libm.so.6`, `libc.so.6`). Internal solidity
+libraries, libcryptopp, libleveldb, libsnappy, and boost are all statically
+baked in. No `/tmp` dependency, no runtime unpacking — drop the single file
+anywhere and it works.
+
+### Build recipe (native, no Docker)
+
+These 7 binaries are built natively from a local `~/solc/webthree-umbrella-010/`
+worktree using the existing Dockerfile static-relink approach but on the host.
+Full recipe in `sourcify_data/DECOMPILER_ROUND_TRIP_GUIDE.md` §11 — summary:
+
+```bash
+cd ~/solc/webthree-umbrella-010
+git worktree add /tmp/solc-build-<hash> <hash>
+cd /tmp/solc-build-<hash>
+
+# Modern-cmake / C++11 compatibility patches (in addition to the ones already
+# documented in §11)
+sed -i 's/cmake_minimum_required(VERSION [0-9.]*)/cmake_minimum_required(VERSION 3.5)/' CMakeLists.txt
+find . -name CMakeLists.txt -exec sed -i 's/cmake_policy(SET CMP0042 OLD)/cmake_policy(SET CMP0042 NEW)/g' {} \;
+echo 'set(JSON_RPC_CPP_FOUND FALSE)' > cmake/Findjson_rpc_cpp.cmake
+
+# New patch for these intermediate commits — libstdc++'s stricter overload
+# resolution rejects the original ambiguous `list<list<T>>` constructor:
+sed -i 's|list<list<ContractDefinition const\*>> input(1, {});|list<list<ContractDefinition const*>> input{list<ContractDefinition const*>{}};|' libsolidity/NameAndTypeResolver.cpp
+
+# Build (shared-library pass first to produce the .o files we relink later)
+mkdir -p build && cd build
+printf '#pragma once\n#define ETH_PROJECT_VERSION "0.0.9.26+N"\n' > BuildInfo.h
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DFATDB=OFF -DEVMJIT=OFF -DGUI=OFF -DETHASHCL=OFF -DTESTS=OFF -DJSONRPC=OFF \
+    -DCMAKE_CXX_FLAGS="-std=c++11 -O3 -DNDEBUG -Wno-error -Wno-unused-result -Wno-unused-variable -Wno-unused-parameter -Wno-deprecated-declarations"
+make -j$(nproc) solidity
+
+# Static relink: archive each internal lib's .o files and whole-archive them
+for lib in libsolidity libevmasm libevmcore libdevcore libdevcrypto libscrypt; do
+    rm -f $lib.a
+    find $lib -name "*.o" -print0 | xargs -0 -r ar rcs $lib.a
+done
+
+g++ -o solc-static \
+    solc/CMakeFiles/solc.dir/*.o \
+    -Wl,--whole-archive \
+    libsolidity.a libevmasm.a libevmcore.a libdevcore.a libdevcrypto.a libscrypt.a \
+    -Wl,--no-whole-archive \
+    /usr/lib/x86_64-linux-gnu/libcryptopp.a \
+    -Wl,-Bstatic -lboost_filesystem -lboost_program_options -lboost_system \
+    -lboost_random -lboost_regex -lboost_thread -lboost_chrono \
+    -lleveldb \
+    -Wl,-Bdynamic /usr/lib/x86_64-linux-gnu/libsnappy.so.1 \
+    -ljsoncpp -lstdc++ -lgcc_s -lpthread -ldl
+
+strip solc-static
+```
+
+Host prerequisites: `libcryptopp-dev`, `libleveldb-dev`, `libsnappy1v5`,
+`libjsoncpp-dev`, `libboost-all-dev`, `patchelf` (only needed if you also want
+the non-static bundle form). The resulting `solc-static` is a ~4.7 MB ELF
+that can be copied to any x86_64 Linux host with a recent libstdc++.
+
+Ubuntu 22.04's `/usr/lib/x86_64-linux-gnu/libsnappy.so.1` is dynamic-only;
+the link uses the full path to pick it up as a normal shared dep (matching
+the existing 0.0.9.24-26 binaries which do the same).
